@@ -9,6 +9,8 @@ IMAGES_PATH = '/Users/matteorr/Desktop/lowrank_upload/inputs/lsp_dataset/images/
 
 ## SAVE_PATH: path of the folder to save the resulting model data
 SAVE_PATH       = '../data'
+if not os.path.exists(SAVE_PATH):
+    os.makedirs(SAVE_PATH)
 
 save_dataset        = True
 save_partial_models = False

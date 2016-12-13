@@ -134,7 +134,7 @@ class train_model:
             self.V = V[:self.num_factors,:]
             self.data_2d_mean = data_2d_mean
             self.utilities_data = data_2d_mean
-            pickle.dump(utilities_data, open(self.save_path + '/' + self.time_str + '/utilities_data.pkl', 'wb'))
+            pickle.dump(self.utilities_data, open(self.save_path + '/' + self.time_str + '/utilities_data.pkl', 'wb'))
             pickle.dump(Us, open('%s/U_final.pkl'%(self.save_models_path), 'wb'))
             pickle.dump(Vs, open('%s/V_final.pkl'%(self.save_models_path), 'wb'))
 
