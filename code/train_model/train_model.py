@@ -135,8 +135,8 @@ class train_model:
             self.data_2d_mean = data_2d_mean
             self.utilities_data = data_2d_mean
             pickle.dump(self.utilities_data, open(self.save_path + '/' + self.time_str + '/utilities_data.pkl', 'wb'))
-            pickle.dump(Us, open('%s/U_final.pkl'%(self.save_models_path), 'wb'))
-            pickle.dump(Vs, open('%s/V_final.pkl'%(self.save_models_path), 'wb'))
+            pickle.dump(self.U, open('%s/U_final.pkl'%(self.save_models_path), 'wb'))
+            pickle.dump(self.V, open('%s/V_final.pkl'%(self.save_models_path), 'wb'))
 
         elif self.model_type == 'bucketed_svd_2d':
             bucketer_obj = bucketer(

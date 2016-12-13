@@ -206,7 +206,7 @@ class utilities:
                         fig = plt.figure()
                         ax = p3.Axes3D(fig)
 
-                        mua = mean[a] + b * U[:,k]
+                        mua = mean[a] + b * U[a,:,k]
                         x_joints = mua[self.x_portion_3d]
                         y_joints = mua[self.y_portion_3d]
                         z_joints = -mua[self.z_portion_3d]
@@ -219,9 +219,9 @@ class utilities:
                         #ax.invert_zaxis()
                         ax.view_init(elev=-85, azim=-90)
 
-                        ax.set_xlim(x_lim[0], x_lim[1])
-                        ax.set_ylim(y_lim[0], y_lim[1])
-                        ax.set_zlim(z_lim[0], z_lim[1])
+                        ax.set_xlim(xlim[0], xlim[1])
+                        ax.set_ylim(ylim[0], ylim[1])
+                        ax.set_zlim(zlim[0], zlim[1])
 
                         plt.suptitle('Pose %d of Bucket %d'%(k,a))
                         plt.savefig('%s/img/pose%d.png'%(save_dir, idx))

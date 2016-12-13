@@ -1,5 +1,6 @@
 from train_model.train_model import train_model
 from utilities.utilities import utilities
+import os
 
 ## DATASET_PATH: path to the dataset with the annotations
 DATASET_PATH = '../inputs/CO_LSP_train2016.json'
@@ -119,5 +120,5 @@ colors = ['g',
            'c',
            'm',
            'c']
-utility_obj = utilities(train_model_obj, colors, basis_coeff=1)
+utility_obj = utilities(train_model_obj, colors, basis_coeff=10)
 utility_obj.plot_movemes()
