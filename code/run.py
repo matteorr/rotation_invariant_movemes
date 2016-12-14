@@ -6,7 +6,7 @@ import os
 DATASET_PATH = '../inputs/CO_LSP_train2016.json'
 
 ## IMAGES_PATH: path of the actual images of LSP
-IMAGES_PATH = '/Users/matteorr/Desktop/lowrank_upload/inputs/lsp_dataset/images/'
+IMAGES_PATH = '/home/mronchi/Datasets/lsp/lsp_dataset/images/'
 
 ## SAVE_PATH: path of the folder to save the resulting model data
 SAVE_PATH       = '../data'
@@ -37,7 +37,7 @@ activities = ['athletics', 'badminton', 'soccer', 'tennis', 'volleyball', 'baseb
 #   - 'bucketed_svd_3d':
 #   - 'lfa_2d':
 #   - 'lfa_3d':
-model_type = 'lfa_2d'
+model_type = 'lfa_3d'
 
 # initialization for the U and V matrices in the lfa3d model
 #   - 'random':
@@ -58,7 +58,7 @@ num_buckets = 8
 #   - 'l1_reg':
 #   - 'l2_reg':
 #   - 'l2_l1_ista_reg':
-objective_f_type = 'l2_reg'
+objective_f_type = 'l2_li_ista_reg'
 
 hyper_params = dict()
 hyper_params['l_rate_U']           = 1e-4
@@ -105,7 +105,14 @@ train_model_obj = train_model(
                 )
 
 train_model_obj.train()
+#train_model_obj.load('2016_12_14_00_47_40')
 
+# class used for plotting the learned movemes
+# inputs:
+#  - the trained obj: train_model_obj
+#  - color list: for coloring the skeleton
+#  - basis_coeff: a multiplying factor for moveme strength
+#                 (not used for lfa3d or lfa2d)
 colors = ['g',
            'g',
            'y',
@@ -120,5 +127,5 @@ colors = ['g',
            'c',
            'm',
            'c']
-utility_obj = utilities(train_model_obj, colors, basis_coeff=10)
+utility_obj = utilities(train_model_obj, colors, basis_coeff=1)
 utility_obj.plot_movemes()
