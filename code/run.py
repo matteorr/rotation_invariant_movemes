@@ -58,7 +58,7 @@ num_buckets = 8
 #   - 'l1_reg':
 #   - 'l2_reg':
 #   - 'l2_l1_ista_reg':
-objective_f_type = 'l2_li_ista_reg'
+objective_f_type = 'l2_l1_ista_reg'
 
 hyper_params = dict()
 hyper_params['l_rate_U']           = 1e-4
@@ -99,13 +99,12 @@ train_model_obj = train_model(
                     # objective function type for the SGD procedures
                     objective_f_type=objective_f_type,
                     # a dictionary containing all the optimization hyperparams
-                    hyper_params=hyper_params,
-                    # provide an input matrix for U
-                    U_test=None
+                    hyper_params=hyper_params
                 )
 
 train_model_obj.train()
-#train_model_obj.load('2016_12_14_00_47_40')
+#pretrained_model_time_stamp = ''
+#train_model_obj.load(pretrained_model_time_stamp)
 
 # class used for plotting the learned movemes
 # inputs:
